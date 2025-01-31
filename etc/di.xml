@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Alexandru-Manuel Carabus All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Hawksama\OauthSecurityPlus\Api\Data\IpInterface" type="Hawksama\OauthSecurityPlus\Model\IpModel"/>
+    <preference for="Hawksama\OauthSecurityPlus\Api\IpRepositoryInterface"  type="Hawksama\OauthSecurityPlus\Model\IpRepository" />
+
+    <!-- Logger & Handler -->
+    <type name="Hawksama\OauthSecurityPlus\Logger\Handler\OauthSecurityPlusHandler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Hawksama\OauthSecurityPlus\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">api_security_plus</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">
+                    Hawksama\OauthSecurityPlus\Logger\Handler\OauthSecurityPlusHandler
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Console Commands -->
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="hawksama_oauthsecurityplus_add"
+                      xsi:type="object">Hawksama\OauthSecurityPlus\Console\Add</item>
+                <item name="hawksama_oauthsecurityplus_remove"
+                      xsi:type="object">Hawksama\OauthSecurityPlus\Console\Remove</item>
+                <item name="hawksama_oauthsecurityplus_list"
+                      xsi:type="object">Hawksama\OauthSecurityPlus\Console\Show</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Alexandru-Manuel Carabus All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="hawksama_ip_whitelist" resource="default" engine="innodb" comment="IP Whitelist">
+        <column xsi:type="int" name="ip_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Primary Key"/>
+        <column xsi:type="varchar" name="ip_name" length="255" nullable="false" comment="IP Name"/>
+        <column xsi:type="varchar" name="ip_address" length="255" nullable="false" comment="IP Address"/>
+        <column xsi:type="smallint" name="enabled" nullable="false" default="1" comment="1=Enabled,0=Disabled"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="ip_id"/>
+        </constraint>
+
+        <!-- Unique constraint on ip_address -->
+        <constraint xsi:type="unique" referenceId="HAWKSAMA_OAUTH_IP_ADDRESS">
+            <column name="ip_address"/>
+        </constraint>
+    </table>
+</schema>

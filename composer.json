@@ -1,0 +1,23 @@
+{
+    "name": "hawksama/module-oauth-security-plus",
+    "version": "1.0.0",
+    "description": "A lnot so ightweight Magento 2 module that restricts Admin API token creation to whitelisted IP addresses, enhancing store security.",
+    "type": "magento2-module",
+    "require": {
+        "magento/framework": "*",
+        "magento/module-integration": "100.4.*",
+        "hawksama/magento2-admin-menu": "^1.0"
+    },
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+    "files": [
+        "registration.php"
+    ],
+    "psr-4": {
+          "Hawksama\\OauthSecurityPlus\\": ""
+        }
+    }
+}

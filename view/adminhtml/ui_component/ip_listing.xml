@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Alexandru-Manuel Carabus All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">ip_listing.ip_listing_data_source</item>
+            <item name="deps" xsi:type="string">ip_listing.ip_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add New</label>
+            </button>
+        </buttons>
+        <spinner>ip_listing_columns</spinner>
+        <deps>
+            <dep>ip_listing.ip_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="ip_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">ip_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Hawksama_OauthSecurityPlus::management</aclResource>
+        <dataProvider class="Hawksama\OauthSecurityPlus\Ui\DataProvider\IpDataProvider" name="ip_listing_data_source">
+            <settings>
+                <requestFieldName>ip_id</requestFieldName>
+                <primaryFieldName>ip_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="ip_listing_columns">
+        <column name="ip_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="ip_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">IP Name</label>
+            </settings>
+        </column>
+        <column name="ip_address">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">IP Address</label>
+            </settings>
+        </column>
+        <column name="enabled">
+            <settings>
+                <filter>select</filter>
+                <label translate="true">Enabled</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Hawksama\OauthSecurityPlus\Ui\Component\Listing\Column\IpBlockActions">
+            <settings>
+                <indexField>ip_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Alexandru-Manuel Carabus All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">ip_form.ip_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">IP Form</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <namespace>ip_form</namespace>
+        <dataScope>data.general</dataScope>
+        <deps>
+            <dep>ip_form.ip_form_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="save" class="Hawksama\OauthSecurityPlus\Block\Adminhtml\Form\Ip\Save"/>
+            <button name="back" class="Hawksama\OauthSecurityPlus\Block\Adminhtml\Form\Ip\Back"/>
+            <button name="delete" class="Hawksama\OauthSecurityPlus\Block\Adminhtml\Form\Ip\Delete"/>
+        </buttons>
+    </settings>
+    <dataSource name="ip_form_data_source" component="Magento_Ui/js/form/provider">
+        <settings>
+            <submitUrl path="hawksama/ip/save"/>
+        </settings>
+        <dataProvider class="Hawksama\OauthSecurityPlus\Ui\DataProvider\IpDataProvider" name="ip_form_data_source">
+            <settings>
+                <requestFieldName>ip_id</requestFieldName>
+                <primaryFieldName>ip_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <label translate="true">General Information</label>
+        </settings>
+        <field name="ip_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </field>
+        <field name="ip_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">IP Name</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="ip_address">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">IP Address</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="enabled">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Enabled Rule</item>
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="string">1</item>
+                        <item name="false" xsi:type="string">0</item>
+                    </item>
+                    <item name="default" xsi:type="string">1</item>
+                    <item name="dataScope" xsi:type="string">enabled</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>
