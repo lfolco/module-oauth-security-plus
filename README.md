@@ -69,6 +69,7 @@ composer require hawksama/module-oauth-security-plus
 Usage:
  hawksama:api-whitelist:add [ip1] [ip2] [ip3] ...
  hawksama:api-whitelist:remove [ip1] [ip2] [ip3] ...
+ hawksama:api-whitelist:list 
 
 Arguments:
  ip1-ipN        One or more IPv4 or IPv6 addresses to be added or removed
@@ -82,9 +83,11 @@ bin/magento hawksama:api-whitelist:add 203.0.113.10 198.51.100.25
 # 2) Remove 203.0.113.10 and 198.51.100.25 from the whitelist
 bin/magento hawksama:api-whitelist:remove 203.0.113.10 198.51.100.25
 
-# 3) Remove ALL IPs from the whitelist 
-# (no additional arguments provided)
-bin/magento hawksama:api-whitelist:remove
+# 3) Remove IPs from the whitelist
+bin/magento hawksama:api-whitelist:remove 1.1.1.1
+
+# 4) List all IPs stored in database
+bin/magento hawksama:api-whitelist:list
 ```
 
 ---
