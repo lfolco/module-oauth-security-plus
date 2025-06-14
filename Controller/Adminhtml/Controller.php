@@ -29,7 +29,7 @@ abstract class Controller extends Action
      */
     protected function initPage($resultPage)
     {
-        $resultPage->setActiveMenu('Hawksama_AdminMenu::menu');
+        $resultPage->setActiveMenu('Magento_Backend::system');
         return $resultPage;
     }
 }
