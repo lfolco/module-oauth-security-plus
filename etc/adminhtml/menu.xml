@@ -14,7 +14,7 @@
              translate="title"
              sortOrder="110"
              action="hawksama/ip/index"
-             parent="Hawksama_AdminMenu::menu"
+             parent="Magento_Backend::system_other_settings"
              resource="Hawksama_OauthSecurityPlus::configuration"/>
     </menu>
 </config>
